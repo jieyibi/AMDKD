@@ -194,7 +194,7 @@ if __name__ == "__main__":
                         help="Batch size to use during (baseline) evaluation")
     # parser.add_argument('--decode_type', type=str, default='greedy',
     #                     help='Decode type, greedy or sampling')
-    parser.add_argument('--width', type=int, nargs='+',default=1280,
+    parser.add_argument('--width', type=int, nargs='+',default=0,
                         help='Sizes of beam to use for beam search (or number of samples for sampling), '
                              '0 to disable (default), -1 for infinite')
     parser.add_argument('--decode_strategy', type=str, default='sample',
@@ -211,37 +211,18 @@ if __name__ == "__main__":
                         help='Use multiprocessing to parallelize over multiple GPUs')
     parser.add_argument('--problem', default='tsp', help="The problem to solve, default 'tsp'")
     parser.add_argument('--former_epoch',default=0)
-    parser.add_argument('--graph_size',type=int,default=100)
 
     opts = parser.parse_args()
-    print(torch.cuda.is_available())
     use_cuda = torch.cuda.is_available() and not opts.no_cuda
-    opts.device = torch.device("cuda:3" if use_cuda else "cpu")
+    opts.device = torch.device("cuda:0" if use_cuda else "cpu")
 
-    print('graph_size: ', opts.graph_size)
     print('device: ',opts.device)
-    print(opts.decode_strategy,opts.width)
     assert opts.o is None or (len(opts.datasets) == 1 and len(opts.width) <= 1), \
         "Cannot specify result filename with more than one dataset or more than one width"
 
     widths = opts.width if opts.width is not None else [0]
+    print(opts.decode_strategy, opts.width)
 
-    model_path_list=[
-        "pretrained/tsp_100/epoch-best.pt"
-    ]
-
-    opts.datasets = [
-        './data/new_data_FINAL/tsp/tsp_uniform{}_10000_seed1234.pkl'.format(opts.graph_size),
-        './data/new_data_FINAL/tsp/tsp_cluster{}_10000_seed1234_noLHS.pkl'.format(opts.graph_size),
-        './data/new_data_FINAL/tsp/tsp_mixed{}_10000_seed1234_noLHS.pkl'.format(opts.graph_size),
-        './data/new_data_FINAL/tsp/tsp_Grid{}_10000.pkl'.format(opts.graph_size),
-        './data/new_data_FINAL/tsp/tsp_Implosion{}_10000.pkl'.format(opts.graph_size),
-        './data/new_data_FINAL/tsp/tsp_Expansion{}_10000_Norm.pkl'.format(opts.graph_size),
-        './data/new_data_FINAL/tsp/tsp_Explosion{}_10000_Norm.pkl'.format(opts.graph_size),
-    ]
-
-    for model in model_path_list:
-        for dataset in opts.datasets:
-            opts.model = model
-            print(dataset)
-            costs, _, _ = eval_dataset(dataset, opts.width, opts.softmax_temperature, opts)
+    for dataset in opts.datasets:
+        print(dataset)
+        costs, _, _ = eval_dataset(dataset, opts.width, opts.softmax_temperature, opts)

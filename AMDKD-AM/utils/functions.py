@@ -129,7 +129,6 @@ def load_model(path, epoch=None,use_adjacent=False):
 
     )
 
-    print(args['normalization'])
 
     if isinstance(path,list):
         print('  [*] Loading encoder from {}'.format(path[0]))
