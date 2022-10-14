@@ -14,13 +14,12 @@ For more details, please see our paper **Learning Generalizable Models for Vehic
     url={https://openreview.net/forum?id=sOVNpUEgKMp}
 }
 ```
-
-## Usage
-
 We provide codes for two combinatorial optimization problems:
 
 - Traveling Salesman Problem (TSP)
 - Capacitated Vehicle Routing Problem (CVRP)
+
+## Usage
 
 ### Training
 
