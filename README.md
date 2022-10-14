@@ -19,5 +19,5 @@ For more details, please see our paper **Learning Generalizable Models for Vehic
 
 For the evaluation, please first download from [Google Drive](https://drive.google.com/drive/folders/1-Jf1Rj88zPHWoUlj71ssRiX52b6Ex0Q9?usp=sharing) due to the memory constraint of GitHub.
 
-Put the whole directory of _data_ into _/AMDKD_.
+Put the whole directory of _data_ into _AMDKD/_.
  
