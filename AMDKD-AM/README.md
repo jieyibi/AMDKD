@@ -30,7 +30,7 @@ python run.py --problem cvrp --graph_size 20 --distill_distribution --CUDA_VISIB
 ### Evaluation
 To evaluate a model, you can use `eval.py`.
 
-#####Greedy
+##### Greedy
 
 ```
 python eval.py ../data/vrp/vrp_uniform20_10000.pkl --model pretrained/cvrp_20/epoch-best.pt --decode_strategy greedy --eval_batch_size 256
