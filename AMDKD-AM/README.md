@@ -1,6 +1,6 @@
 # AMDKD-AM
 
-This is the code for AMDKD implemented on [Attention Model](https://github.com/wouterkool/attention-learn-to-route).
+This is the code for [AMDKD](https://openreview.net/forum?id=sOVNpUEgKMp) implemented on [Attention Model](https://github.com/wouterkool/attention-learn-to-route).
 
 We provide codes for two combinatorial optimization problems:
 
@@ -51,18 +51,22 @@ python eval.py ../data/vrp/vrp_uniform20_10000.pkl --model pretrained/cvrp_20/ep
 python run.py -h
 python eval.py -h
 ```
+## Dependencies
 
+- Python>=3.8
+- gurobipy==9.5.2
+- matplotlib==3.5.1
+- numpy==1.22.3
+- ortools==9.4.1874
+- scikit_learn==1.1.2
+- scipy==1.8.0
+- setuptools==58.0.4
+- six==1.16.0
+- tensorboard_logger==0.1.0
+- tensorflow==2.10.0
+- torch==1.11.0+cu113
+- tqdm==4.62.3
 
 ## Acknowledgements
-This code is originally implemented based on  [Attention Model](https://github.com/wouterkool/attention-learn-to-route) , which is source code of the paper   [Attention, Learn to Solve Routing Problems!](https://openreview.net/forum?id=ByxBFsRqYm) which has been accepted at [ICLR 2019](https://iclr.cc/Conferences/2019), cite as follows:
 
-```
-@inproceedings{
-    kool2018attention,
-    title={Attention, Learn to Solve Routing Problems!},
-    author={Wouter Kool and Herke van Hoof and Max Welling},
-    booktitle={International Conference on Learning Representations},
-    year={2019},
-    url={https://openreview.net/forum?id=ByxBFsRqYm},
-}
-```
+This code is originally implemented based on [Attention Model](https://github.com/wouterkool/attention-learn-to-route), which is source code of the paper _Attention, Learn to Solve Routing Problems!_ accepted at ICLR 2019.
