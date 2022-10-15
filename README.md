@@ -1,6 +1,6 @@
 # Learning Generalizable Models for Vehicle Routing Problems via Knowledge Distillation
 
-This is the official PyTorch code for the Adaptive Multi-Distribution Knowledge Distillation (AMDKD) scheme implemented on AM and POMO.
+This is the PyTorch code for the Adaptive Multi-Distribution Knowledge Distillation (AMDKD) scheme implemented on AM and POMO.
 
 For more details, please see our paper [Learning Generalizable Models for Vehicle Routing Problems via Knowledge Distillation]() which has been accepted at NeurIPS 2022. If this code is useful for your work, please cite our paper:
 
@@ -8,10 +8,10 @@ For more details, please see our paper [Learning Generalizable Models for Vehicl
 @inproceedings{
     bi2022learning,
     title={Learning Generalizable Models for Vehicle Routing Problems via Knowledge Distillation},
-    author={Jieyi Bi and Yining Ma and Jiahai Wang and Zhiguang Cao and Jinbiao Chen and Yuan Sun and Yeow Meng Chee},
-    booktitle={Thirty-Sixth Conference on Neural Information Processing Systems},
-    year={2022},
-    url={https://openreview.net/forum?id=sOVNpUEgKMp}
+    author={Bi, Jieyi and Ma, Yining and Wang, Jiahai and Cao, Zhiguang and Chen, Jinbiao and Sun, Yuan and Yeow, Meng Chee},
+    booktitle = {Advances in Neural Information Processing Systems},
+    publisher = {Curran Associates, Inc.},
+    year={2022}
 }
 ```
 
