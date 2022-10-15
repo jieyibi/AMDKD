@@ -8,7 +8,7 @@ For more details, please see our paper [Learning Generalizable Models for Vehicl
 @inproceedings{
     bi2022learning,
     title={Learning Generalizable Models for Vehicle Routing Problems via Knowledge Distillation},
-    author={Bi, Jieyi and Ma, Yining and Wang, Jiahai and Cao, Zhiguang and Chen, Jinbiao and Sun, Yuan and Yeow, Meng Chee},
+    author={Bi, Jieyi and Ma, Yining and Wang, Jiahai and Cao, Zhiguang and Chen, Jinbiao and Sun, Yuan and Chee, Yeow Meng},
     booktitle = {Advances in Neural Information Processing Systems},
     publisher = {Curran Associates, Inc.},
     year={2022}
