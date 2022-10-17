@@ -2,6 +2,8 @@
 
 This is the PyTorch code for the Adaptive Multi-Distribution Knowledge Distillation (AMDKD) scheme implemented on AM and POMO.
 
+AMDKD is a generic scheme for learning more cross-distribution generalizable deep models, which leverages various knowledge from multiple teachers trained on exemplar distributions to yield a light-weight yet generalist student model. It is trained with an adaptive strategy that allows the student to concentrate on difficult distributions, so as to absorb hard-to-master knowledge more effectively. 
+
 For more details, please see our paper [Learning Generalizable Models for Vehicle Routing Problems via Knowledge Distillation](https://arxiv.org/abs/2210.07686) which has been accepted at NeurIPS 2022. If this code is useful for your work, please cite:
 
 ```
@@ -13,6 +15,8 @@ For more details, please see our paper [Learning Generalizable Models for Vehicl
     year={2022}
 }
 ```
+## Paper
+![architecture](./architecture.jpg)
 
 ## Data 
 
