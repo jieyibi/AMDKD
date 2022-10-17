@@ -29,12 +29,12 @@ You can specify the model as a parameter contained in *test.py*. We use the save
 
 ### Dependencies
 
-matplotlib==3.5.1
-numpy==1.22.3
-pytz==2022.1
-rpy2==3.5.1
-tensorboard_logger==0.1.0
-torch==1.11.0+cu113
+- matplotlib==3.5.1
+- numpy==1.22.3
+- pytz==2022.1
+- rpy2==3.5.1
+- tensorboard_logger==0.1.0
+- torch==1.11.0+cu113
 
 
 ## Acknowledgements
