@@ -1,6 +1,6 @@
 # AMDKD-AM
 
-This is the code for [AMDKD](https://openreview.net/forum?id=sOVNpUEgKMp) implemented on [Attention Model](https://github.com/wouterkool/attention-learn-to-route).
+This is the code for [AMDKD](https://arxiv.org/abs/2210.07686) implemented on [Attention Model](https://github.com/wouterkool/attention-learn-to-route).
 
 We provide codes for two combinatorial optimization problems:
 
