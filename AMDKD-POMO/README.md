@@ -29,6 +29,7 @@ You can specify the model as a parameter contained in *test.py*. We use the save
 
 ### Dependencies
 
+- Python>=3.8
 - matplotlib==3.5.1
 - numpy==1.22.3
 - pytz==2022.1
