@@ -1,6 +1,6 @@
 # AMDKD+EAS
 
-This is the code for [AMDKD](https://arxiv.org/abs/2210.07686) implemented on [POMO](https://github.com/yd-kwon/POMO), which is equipped with [EAS](https://github.com/ahottung/EAS) to continuously improve its performance during inference (longer _T_ will yield even better performance). For EAS, we adopt its EAS-lay version (_T_=100) for demonstration purpose.
+This is the code for [AMDKD](https://arxiv.org/abs/2210.07686) equipped with [EAS](https://github.com/ahottung/EAS), aiming to continuously improve its performance during inference (longer _T_ will yield even better performance). For EAS, we adopt its EAS-lay version (_T_=100) for demonstration purpose.
 
 We provide codes for two combinatorial optimization problems:
 
@@ -9,7 +9,7 @@ We provide codes for two combinatorial optimization problems:
 
 ## Usage
 
-To test a AMDKD-POMO model with EAS strategy, please run the command as follows.
+To test the AMDKD-POMO model with EAS strategy, please run the command as follows.
 
 ##### TSP
 
@@ -33,7 +33,7 @@ Set the argument `-batch_size` to change the batch size in the case of different
 
 If you want to test the pretrained AMDKD-POMO model on the instances in TSPLIB or CVRPLIB, add the flag `-round_distances` to normalize the initial input coordinates and `-p_runs 10` to set the number of parallel runs per instance as 10 (as suggested in the source code of EAS). If your GPU memory is limited, reduce `-p_runs` to a smaller value.
 
-More details about the parameters, please refer to the source code of [EAS](https://github.com/ahottung/EAS). In this repo, we directly use the parameters of the original EAS, except for the `-max_iter` (_T_) that we limit to 100.
+More details about the parameters, please refer to the source code for [EAS](https://github.com/ahottung/EAS). In this repo, we directly use the parameters of the original EAS, except for the `-max_iter` (_T_) that we limit to 100.
 
 ### Dependencies
 
@@ -43,4 +43,4 @@ More details about the parameters, please refer to the source code of [EAS](http
 
 ## Acknowledgements
 
-This code is originally implemented based on [EAS](https://github.com/ahottung/EAS) and [POMO](https://github.com/yd-kwon/POMO), which is source code of the paper _Efficient Active Search for Combinatorial Optimization Problems_ accepted at ICLR 2022. 
+This code is originally implemented based on [EAS](https://github.com/ahottung/EAS), which is the source code of the paper _Efficient Active Search for Combinatorial Optimization Problems_ accepted at ICLR 2022. 
