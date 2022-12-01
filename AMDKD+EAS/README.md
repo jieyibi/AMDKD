@@ -16,7 +16,7 @@ To test a AMDKD-POMO model with EAS strategy, please run the command as follows.
 Take TSP-100 as an example:
 
 ```
-CUDA_VISIBLE_DEVICES=1 python run_search.py -problem TSP -method eas-lay -model_path ../AMDKD-POMO/TSP/POMO/pretrained/checkpoint-tsp-100.pt  -instances_path ../data/tsp/tsp_uniform100_10000.pkl  -max_iter 100 -batch_size 1250 -param_lr 0.0032 -param_lambda 0.012
+CUDA_VISIBLE_DEVICES=0 python run_search.py -problem TSP -method eas-lay -model_path ../AMDKD-POMO/TSP/POMO/pretrained/checkpoint-tsp-100.pt  -instances_path ../data/tsp/tsp_uniform100_10000.pkl  -max_iter 100 -batch_size 100 -param_lr 0.0032 -param_lambda 0.012
 ```
 
 ##### CVRP
@@ -27,11 +27,11 @@ Take CVRP-100 as an example:
 CUDA_VISIBLE_DEVICES=0 python run_search.py -problem CVRP -method eas-lay -model_path ../AMDKD-POMO/CVRP/POMO/pretrained/checkpoint-cvrp-100.pt -instances_path ../data/vrp/vrp_uniform100_10000.pkl -max_iter 100 -batch_size 100  -param_lr 0.0041 -param_lambda 0.013
 ```
 
-Note: 
+##### Note
 
-Set the argument `-batch_size` to change the batch size in the case of different GPUs with different memory constraint. We ran our code on the RTX 3090 GPU cards. Set the argument `CUDA_VISIBLE_DEVICES=` to use specific GPUs as you want. 
+Set the argument `-batch_size` to change the batch size in the case of different GPUs with different memory constraint. We ran our code on the RTX 3090 GPU cards. Set the argument `CUDA_VISIBLE_DEVICES` to use specific GPUs as you want. 
 
-If you test on the instances in TSPLIB or CVRPLIB, add the flag `-round_distances` to normalize the initial input coordinates and `-p_runs 10` to set the number of parallel runs per instance as 10 (as suggested in the source code of EAS). If your GPU memory is limited, reduce `-p_runs` to a smaller value.
+If you want to test the pretrained AMDKD-POMO model on the instances in TSPLIB or CVRPLIB, add the flag `-round_distances` to normalize the initial input coordinates and `-p_runs 10` to set the number of parallel runs per instance as 10 (as suggested in the source code of EAS). If your GPU memory is limited, reduce `-p_runs` to a smaller value.
 
 More details about the parameters, please refer to the source code of [EAS](https://github.com/ahottung/EAS). In this repo, we directly use the parameters of the original EAS, except for the `-max_iter` (_T_) that we limit to 100.
 
