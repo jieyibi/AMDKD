@@ -328,6 +328,7 @@ def train_batch_distill(
                 if not opts.twist_kldloss else \
                 (student_logp.exp() * ((student_logp.exp()+0.00001).log() - (teacher_logp.exp()+0.00001).log())).sum(dim=1).mean()
         else:
+            teacher_logp, student_logp = (teacher_logp.exp()+0.00001).log(), (student_logp.exp()+0.00001).log()
             soft_loss = nn.KLDivLoss()(student_logp,teacher_logp.exp()) if not opts.twist_kldloss else nn.KLDivLoss()(teacher_logp, student_logp.exp())
 
         # loss function from Hinton et. al, 2015 (soft * alpha*T^2 + hard * (1-alpha))
