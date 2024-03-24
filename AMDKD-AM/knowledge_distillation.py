@@ -167,6 +167,7 @@ def train_epoch_distill(teacher_model, student_model, optimizer, baseline, lr_sc
 
 
     # Generate new training data for each epoch
+    opts.data_distribution=class_type
     training_dataset = baseline.wrap_dataset(problem.make_dataset(
         size=opts.graph_size, num_samples=opts.epoch_size, distribution=opts.data_distribution,
         n_cluster=opts.n_cluster, mix_data=opts.generate_mix_data))
