@@ -14,7 +14,7 @@ We provide codes for two combinatorial optimization problems:
 For example, training CVRP instances with 20 nodes:
 
 ```
-python run.py --problem cvrp --graph_size 20 --distill_distribution
+python run.py --problem cvrp --graph_size 20 --distillation --distill_distribution
 ```
 
 _options.py_ contains parameters you can modify.
@@ -24,7 +24,7 @@ By default, training will happen *on GPU card(id: 0)*.
 Set the argument `--CUDA_VISIBLE_ID` to use specific GPUs:
 
 ```
-python run.py --problem cvrp --graph_size 20 --distill_distribution --CUDA_VISIBLE_ID 2,3
+python run.py --problem cvrp --graph_size 20 --distillation --distill_distribution --CUDA_VISIBLE_ID 2,3
 ```
 
 ### Evaluation
