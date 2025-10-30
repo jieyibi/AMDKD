@@ -198,10 +198,31 @@ class AttentionModel(nn.Module):
         # DataParallel since sequences can be of different lengths
         ll = self._calc_log_likelihood(_log_p, pi, mask)
 
-        if distillation and return_pi:
-            return self._init_embed(input), embeddings,None, _log_p_kd, cost, ll, pi
-        elif distillation:
-            return self._init_embed(input), embeddings,None, _log_p_kd, cost, ll,pi
+        if distillation:
+            # Pad variable-length outputs to fixed length to support DataParallel gather
+            t_max = None
+            if opts is not None and hasattr(opts, 'graph_size'):
+                t_max = max(1, int(opts.graph_size) * 2)
+            else:
+                t_max = pi.size(1)
+
+            cur_t = pi.size(1)
+            if cur_t < t_max:
+                pad_steps = t_max - cur_t
+                last_sel = pi[:, -1:]
+                pi = torch.cat([pi, last_sel.expand(-1, pad_steps)], dim=1)
+                # For distillation log-probs, pad with zeros (log 1 over uniform after exp), same for all GPUs
+                pad_log = _log_p_kd.new_zeros(_log_p_kd.size(0), pad_steps, _log_p_kd.size(2))
+                _log_p_kd = torch.cat([_log_p_kd, pad_log], dim=1)
+            elif cur_t > t_max:
+                # Truncate to t_max if ever longer (should be rare)
+                pi = pi[:, :t_max]
+                _log_p_kd = _log_p_kd[:, :t_max]
+
+            if return_pi:
+                return self._init_embed(input), embeddings, None, _log_p_kd, cost, ll, pi
+            else:
+                return self._init_embed(input), embeddings, None, _log_p_kd, cost, ll, pi
         elif return_pi:
             return cost, ll, pi
 
@@ -740,10 +761,29 @@ class student_AttentionModel(nn.Module):
         ll = self._calc_log_likelihood(_log_p, pi, mask)
 
 
-        if distillation and return_pi:
-            return self._init_embed(input), embeddings, None, _log_p_kd, cost, ll, pi
-        elif distillation:
-            return self._init_embed(input), embeddings,None, _log_p_kd, cost, ll, pi
+        if distillation:
+            # Pad variable-length outputs to fixed length to support DataParallel gather
+            t_max = None
+            if opts is not None and hasattr(opts, 'graph_size'):
+                t_max = max(1, int(opts.graph_size) * 2)
+            else:
+                t_max = pi.size(1)
+
+            cur_t = pi.size(1)
+            if cur_t < t_max:
+                pad_steps = t_max - cur_t
+                last_sel = pi[:, -1:]
+                pi = torch.cat([pi, last_sel.expand(-1, pad_steps)], dim=1)
+                pad_log = _log_p_kd.new_zeros(_log_p_kd.size(0), pad_steps, _log_p_kd.size(2))
+                _log_p_kd = torch.cat([_log_p_kd, pad_log], dim=1)
+            elif cur_t > t_max:
+                pi = pi[:, :t_max]
+                _log_p_kd = _log_p_kd[:, :t_max]
+
+            if return_pi:
+                return self._init_embed(input), embeddings, None, _log_p_kd, cost, ll, pi
+            else:
+                return self._init_embed(input), embeddings, None, _log_p_kd, cost, ll, pi
         elif return_pi:
             return cost, ll, pi
 
